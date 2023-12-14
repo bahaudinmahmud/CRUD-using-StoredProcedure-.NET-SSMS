@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y+tbjnTpwZot4usj5360TVxnDEcNdtIs1N770i1YAstG2f8B+ixZZNHcNli8m2rwJ5KHilaZ0aO2Rh7ojhh1gA==",
+  "success": true,
+  "projectFilePath": "D:\\AAAAAJIBS\\DOTNET\\FINAL- TROLL\\TrollMarket\\src\\TrollMarket.Presentation.API\\TrollMarket.Presentation.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bahaudin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Bahaudin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Bahaudin\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Bahaudin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Bahaudin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Bahaudin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

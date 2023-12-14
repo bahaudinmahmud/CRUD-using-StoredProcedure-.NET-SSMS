@@ -1,0 +1,213 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.welcome {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 19px;
+    padding-right: 19px;
+    padding-top: 19px;
+}
+
+.navbar > .container, .navbar > .container-fluid, .navbar > .container-lg, .navbar > .container-md, .navbar > .container-sm, .navbar > .container-xl, .navbar > .container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    direction: rtl;
+}
+
+.center-navbar {
+    display: flex;
+    justify-content: center;
+}
+.navbar-nav {
+    flex-direction: column;
+    padding-left: 0;
+    justify-content: space-evenly;
+    margin-bottom: 0;
+    list-style: none;
+    flex-direction: row-reverse;
+}
+
+.welcome-box {
+    background-color: #f2f2f2; /* Set your desired background color */
+    padding: 10px;
+}
+
+.navbar-box {
+    background-color: #e6e6e6; /* Set your desired background color */
+    padding: 10px;
+}
+.navbar-expand-sm .navbar-nav {
+    flex-direction: row-reverse;
+}
+.authentication-wrapper {
+    padding-top: 51px;
+}
+.authentication-body {
+    min-height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.authentication-wrapper > header {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 50px 190px;
+    grid-template-rows: 1fr;
+    align-items: flex-end;
+}
+
+.authentication-wrapper .company-logo img {
+    height: 40px;
+}
+
+.authentication-wrapper .company-logo h1 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.authentication-wrapper > main {
+    background-color: #202a45;
+    padding: 40px;
+    margin-top: 15px;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 1fr;
+    min-width: 330px;
+    justify-content: center;
+    text-align: center;
+}
+
+    .authentication-wrapper > main > h1 {
+        margin: 0 0 15px 0;
+        text-transform: capitalize;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .authentication-wrapper > main form {
+        display: grid;
+        margin: 25px 0 25px 0;
+    }
+
+    .authentication-wrapper > main input {
+        display: block;
+        border: none;
+        outline: none;
+        color: #9badd5;
+        background-color: #202a45;
+        padding: 15px;
+        border-bottom: 1px solid #14acf8;
+        margin-bottom: 10px;
+        border-radius: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .authentication-wrapper > main button {
+        background: linear-gradient(to right, #14acf8, #1481fa);
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+        border: none;
+        padding: 15px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .authentication-wrapper > main a {
+        color: #14acf8;
+        line-height: 28px;
+        font-size: 14px;
+    }
+
+    .authentication-wrapper > main select {
+        width: 100%;
+        margin: 10px 0;
+        height: 40px;
+        display: block;
+    }
+.link-container {
+    display: inline-grid;
+}
+.menu {
+    width: 965px;
+    height: 53px;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 10px 5px;
+}
+.author-detail td:first-child {
+    padding-right: 39px;
+}
+.author-detail td:first-child {
+    text-align: left;
+}
+.grid-container {
+    background-color: deepskyblue;
+    border-radius: 4px;
+}
+
+    .grid-container table {
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+        margin-top: 15px;
+        border: solid;
+    }
+
+    .grid-container thead > tr {
+        background-color: gray;
+        border-bottom: #3a466c solid 1px;
+    }
+
+    .grid-container th {
+        padding: 10px;
+        text-transform: capitalize;
+        font-weight: bold;
+        color: white;
+    }
+
+    .grid-container tbody > tr {
+        border-bottom: #3a466c solid 1px;
+    }
+
+    .grid-container tbody td {
+        padding: 10px;
+    }
+
+    .grid-container tbody > tr:nth-child(even) {
+        background-color: white;
+    }
+
+    .grid-container tfoot td {
+        padding: 15px;
+    }
+
+.author-detail td:first-child {
+    padding-right: 39px;
+}
+.h6, h6 {
+    font-size: 1rem;
+    display: flex;
+}
+

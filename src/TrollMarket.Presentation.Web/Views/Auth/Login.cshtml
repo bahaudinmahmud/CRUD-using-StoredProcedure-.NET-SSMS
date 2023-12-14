@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_AccountLayout";
+}
+@model LoginViewModel
+<form method="post" asp-action="login">
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div>
+            <span style="color:darkred;">@ViewBag.ErrorMessage</span>
+        </div>
+    }
+    <input type="text" asp-for="UserName" name="username" placeholder="username" autocomplete="off" class="userName">
+    <input type="password" asp-for="Password" name="password" placeholder="password" class="password">
+    <select asp-for="Role">
+        <option value="Buyer">Buyer</option>
+        <option value="Admin">Admin</option>
+        <option value="Seller">Seller</option>
+    </select>
+    <button type="submit">sign in</button>
+</form>
+<div class="link-container">
+    <a asp-action="register" asp-route-role="buyer">Register as Buyer</a>   
+    <a asp-action="register" asp-route-role="seller">Register as Seller</a>
+</div>

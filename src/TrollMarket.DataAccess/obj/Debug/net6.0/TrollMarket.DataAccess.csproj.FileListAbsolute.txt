@@ -1,0 +1,14 @@
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\bin\Debug\net6.0\TrollMarket.DataAccess.deps.json
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\bin\Debug\net6.0\TrollMarket.DataAccess.runtimeconfig.json
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\bin\Debug\net6.0\TrollMarket.DataAccess.dll
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\bin\Debug\net6.0\TrollMarket.DataAccess.pdb
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.csproj.AssemblyReference.cache
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.AssemblyInfoInputs.cache
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.AssemblyInfo.cs
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.csproj.CoreCompileInputs.cache
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.dll
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\refint\TrollMarket.DataAccess.dll
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.pdb
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\TrollMarket.DataAccess.genruntimeconfig.cache
+D:\AAAAAJIBS\DOTNET\FINAL- TROLL\TrollMarket\src\TrollMarket.DataAccess\obj\Debug\net6.0\ref\TrollMarket.DataAccess.dll

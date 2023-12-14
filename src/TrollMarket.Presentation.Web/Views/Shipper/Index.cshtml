@@ -1,0 +1,239 @@
+﻿@model ShipperIndexViewModel
+<div class="menu">
+    Shipper
+</div>
+
+<div class="grid-container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Add New Shipper
+    </button>
+    <table>
+        <thead>
+        <th>Action</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Service</th>
+        </thead>
+        <tbody>
+            @foreach (var shipment in Model.Shippers)
+            {
+                <tr>
+                    <td>
+                        @if (shipment.ShipperOnLoan >0)
+                        {
+                            <a asp-action="delete" asp-route-Id="@shipment.Id" class="btn btn-primary">Edit</a>
+
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-primary" data-toggle="modal" onclick="addUpdateFormListener('@shipment.Id')" data-target="#update">
+                                Edit
+                            </button>
+                        }                        
+                        <a asp-action="delete" asp-route-Id="@shipment.Id" class="blue-button delete-button">Delete</a>
+                        @if(shipment.Service == true)
+                        {
+                            <a asp-action="StopService" asp-route-Id="@shipment.Id" class="blue-button detail-button">Stop Service</a>
+                        }
+                        else
+                        {
+                            <span class="disabled-button">Stop Service</span>
+                        }
+                    </td>
+                    <td>@shipment.ShipperName</td>
+                    <td>@shipment.Price.ToString("C0")</td>
+                    <td>@(shipment.Service ? "yes" : "no")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Update -->
+
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="popup-dialog form-dialog-update">
+                    <header>
+                        <a href="javascript:;" class="close-button">
+                            <i class="fas fa-window-close"></i>
+                        </a>
+                    </header>
+                    <form>
+                        <table>
+                            <tbody>
+                                <input type="hidden" class="id" id="id">
+                                <tr>
+                                    <td>Name*</td>
+                                    <td>
+                                        <input type="text" class="Name" id="name">
+                                        <div class="validation-message" data-for="Name"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price*</td>
+                                    <td>
+                                        <input type="number" step="any" id="price" class="Price">
+                                        <div class="validation-message" data-for="Price" ></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="blue-button">Save Shipper</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Insert New Shipper</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="popup-dialog form-dialog">
+                    <header>
+                        <a href="javascript:;" class="close-button">
+                            <i class="fas fa-window-close"></i>
+                        </a>
+                    </header>
+                    <form>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Name*</td>
+                                    <td>
+                                        <input type="text" class="Name">
+                                        <div class="validation-message" data-for="Name"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price*</td>
+                                    <td>
+                                        <input type="number" class="Price">
+                                        <div class="validation-message" data-for="Price"></div>
+                                    </td>
+                                </tr>
+@*                                <tr>
+                                    <td>Service*</td>
+                                    <td>
+                                        <input type="checkbox" class="Service">
+                                        <div class="validation-message" data-for="Service"></div>
+                                    </td>
+                                </tr>
+*@                            </tbody>
+                        </table>
+                        <button type="submit" class="blue-button">Save Shipper</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save Shipper</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        addSubmitFormListener();
+        addSubmitUpdateFormListener();
+    }())
+    function collectInputForm() {
+        let dto = {
+            shipperName: $('.form-dialog .Name').val(),
+            price: $('.form-dialog .Price').val(),
+            service: $('.form-dialog .Service').val(),
+        };
+        return dto;
+    }
+    function collectUpdateForm() {
+        let dto = {
+            shipperName: $('#name').val(),
+            price: $('#price').val(),
+            id: $('#id').val(),
+        };
+        return dto;
+    }
+    function addSubmitUpdateFormListener() {
+        $('.form-dialog-update button').click(function (event) {
+            event.preventDefault();
+            let dto = collectUpdateForm();
+            let requestMethod = 'PUT';
+            $.ajax({
+                method: requestMethod,
+                url: 'http://localhost:5286/api/APIShipper',
+                data: JSON.stringify(dto),
+                contentType: 'application/json',
+                success: function (response) {
+                    location.reload();
+                },
+                error: function ({ status, responseJSON }) {
+                    if (status === 400) {
+                        writeValidationMessage(responseJSON.errors);
+                    }
+                }
+            });
+        })
+    }
+    function addSubmitFormListener() {
+        $('.form-dialog button').click(function (event) {
+            event.preventDefault();
+            let dto = collectInputForm();
+            let requestMethod = 'POST';
+            $.ajax({
+                method: requestMethod,
+                url: 'http://localhost:5286/api/APIShipper',
+                data: JSON.stringify(dto),
+                contentType: 'application/json',
+                success: function (response) {
+                    location.reload();
+                },
+                error: function ({ status, responseJSON }) {
+                    if (status === 400) {
+                        console.log(responseJSON.errors)
+                        $(`.form-dialog [data-for=Name]`).text(responseJSON.errors.ShipperName);
+                        $(`.form-dialog [data-for=Price]`).text(responseJSON.errors.Price);
+                        $(`.form-dialog [data-for=Service]`).text(responseJSON.errors.Service);
+                    }
+                }
+            });
+        })
+    }
+    function addUpdateFormListener(id) {
+        let request = new XMLHttpRequest();
+        let url = `http://localhost:5286/api/APIShipper?id=${id}`;
+        request.open('GET', url);
+        request.send();
+        request.onload = () => {
+            let result = JSON.parse(request.response);
+            //console.log(typeof result);
+            //console.log(result.category);
+
+            // Mengatur nilai input dengan properti langsung
+
+            $('#name').val(result.shipperName);
+            $('#price').val(result.price);
+            $('#id').val(id);
+
+        }
+    }
+</script>

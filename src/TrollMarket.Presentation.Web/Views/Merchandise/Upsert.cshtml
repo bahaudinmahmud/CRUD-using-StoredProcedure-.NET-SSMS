@@ -1,0 +1,35 @@
+﻿@model MerchandiseUpsertViewModel
+<div class="menu">
+    Merchandise > Add Product
+</div>
+
+<form class="upsert-form" method="post">
+    <table>
+        <tbody>
+            <input asp-for="SellerId" value="@Model.SellerId" type="hidden">
+            <tr>
+                <td><label asp-for="ProductName"></label></td>
+                <td><input asp-for="ProductName" /><span asp-validation-for="ProductName"></span></td>
+            </tr>      
+            <tr>
+                <td><label asp-for="Category"></label></td>
+                <td><input asp-for="Category" /><span asp-validation-for="Category"></span></td>
+            </tr>
+            <tr>
+                <td class="textarea-label">
+                    <label asp-for="Description"></label>
+                </td>
+                <td>
+                    <textarea asp-for="Description"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Price"></label></td>
+                <td><input asp-for="Price"  /><span asp-validation-for="Price"></span></td>
+            </tr>            
+
+
+        </tbody>
+    </table>
+    <input type="submit" class="blue-button" value="Save" />
+</form>

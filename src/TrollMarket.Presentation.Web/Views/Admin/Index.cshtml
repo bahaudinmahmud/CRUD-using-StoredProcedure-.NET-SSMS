@@ -1,0 +1,29 @@
+﻿
+@model AdminViewModel
+<div class="menu">
+    Admin 
+</div>
+<body class="authentication-body">
+    <div class="authentication-wrapper">
+        <header class="company-logo">
+            <h1>
+            </h1>
+        </header>
+        <main>
+            <form method="post" asp-action="RegisterAdmin" asp-controller="admin">
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div>
+                        <span style="color:darkred;">@ViewBag.ErrorMessage</span>
+                    </div>
+                }
+                <input asp-for="Role" value="admin" type="hidden">
+                <input type="text" asp-for="UserName" name="username" placeholder="username" autocomplete="off" class="userName">
+                <input type="password" asp-for="Password" name="password" placeholder="password" class="password">
+                <input type="password" asp-for="RetypePassword" placeholder="confirm password">
+                <button type="submit">Register New Admin</button>
+            </form>
+        </main>
+    </div>
+</body>
+

@@ -1,0 +1,137 @@
+﻿@model ShopIndexViewModel
+<form class="filter" method="get" asp-action="index">
+    <input asp-for="ProductName" placeholder="find by name" />
+    <input asp-for="Category" placeholder="find by category" />
+    <input asp-for="Description" placeholder="find by description" />
+    <button class="blue-button">Search</button>
+    @*<input type="submit" value="Search" />*@
+</form>
+<div class="grid-container">
+    <table>
+        <thead>
+        <th>Action</th>
+        <th>Name</th>
+        <th>Price</th>
+        </thead>
+        <tbody>
+            @foreach (var shop in Model.Shops)
+            {
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-item-id=@shop.Id>
+                           Add to Cart
+                        </button>                        
+                        <a asp-action="delete" asp-route-id="@shop.Id" class="blue-button delete-button">Detail Info</a>
+                    </td>
+                    <td>@shop.ProductName</td>
+                    <td>@shop.Price.ToString("C0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="popup-dialog form-dialog">
+                    <header>
+                        <a href="javascript:;" class="close-button">
+                            <i class="fas fa-window-close"></i>
+                        </a>
+                    </header>
+                    <form>
+                        <table>
+                            <tbody>
+                                <input type="hidden" value="@Model.BuyerId" id="buyerId" />
+                                <input type="hidden" id="productId" />
+                                <tr>
+                                    <td>Quantity*</td>
+                                    <td>
+                                        <input type="number" class="Quantity" id="Quantity">
+                                        <div class="validation-message" data-for="Quantity"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Shipment*</td>
+                                    <td>
+                                        <select asp-items="Model.Shipments" class="Shipment" id="shipper">
+                                            <option value=null>All Shipments</option>
+                                        </select>
+                                        <div class="validation-message" data-for="Shipment"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="blue-button">Save Shipper</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        addSubmitFormListener();
+        $(document).on('click', '.btn-primary', function () {
+            var itemId = $(this).data('item-id');
+            $('#productId').val(itemId);
+            $('#myModal').modal('show');
+        });
+
+        function addSubmitFormListener() {
+            $('.form-dialog button').click(function (event) {
+                event.preventDefault();
+                let dto = collectInputForm();
+                console.log(dto);
+                let requestMethod = 'POST';
+                $.ajax({
+                    method: requestMethod,
+                    url: 'http://localhost:5286/api/APICart',
+                    data: JSON.stringify(dto),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        location.reload();
+                    },
+                    error: function ({ status, responseJSON }) {
+                        if (status === 400) {
+                            console.log(responseJSON.errors);
+                            $(`.form-dialog [data-for=BuyerId]`).text(responseJSON.errors.BuyerId);
+                            $(`.form-dialog [data-for=ShipperId]`).text(responseJSON.errors.ShipperId);
+                            $(`.form-dialog [data-for=ProductId]`).text(responseJSON.errors.ProductId);
+                            $(`.form-dialog [data-for=Quantity]`).text(responseJSON.errors.Quantity);
+                        }
+                    }
+                });
+            });
+        }
+
+        function collectInputForm() {
+            let dto = {
+                BuyerId: $('#buyerId').val(),
+                ShipperId: $('#shipper').val(),
+                ProductId: $('#productId').val(),
+                Quantity: $('.form-dialog .Quantity').val(),
+            };
+            return dto;
+        }
+    });
+</script>

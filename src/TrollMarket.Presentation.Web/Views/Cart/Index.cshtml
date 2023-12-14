@@ -1,0 +1,40 @@
+﻿@model CartIndexViewModel
+
+<div class="menu">
+    Cart
+</div>
+
+<div class="grid-container">
+    <a asp-controller="Cart" asp-action="PurchaseAll" asp-route-buyerId="@Model.BuyerId" class="blue-button create-button">Purchase All</a>
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div>
+            <span style="color:darkred;">@ViewBag.ErrorMessage</span>
+        </div>
+    }
+    <table>
+        <thead>
+        <th>Action</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Shipment</th>
+        <th>Seller  </th>
+        <th>Total Price</th>
+        </thead>
+        <tbody>
+            @foreach (var cart in Model.Carts)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Delete" asp-route-buyerId="@cart.BuyerId" asp-route-productId="@cart.ProductId" class="blue-button update-button">Remove</a>
+                    </td>
+                    <td>@cart.ProductName</td>
+                    <td>@cart.Quantity</td>
+                    <td>@cart.ShipperName</td>
+                    <td>@cart.SellerName</td>
+                    <td>@cart.TotalPrice.ToString("C0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

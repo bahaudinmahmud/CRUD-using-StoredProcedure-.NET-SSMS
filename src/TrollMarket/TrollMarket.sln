@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrollMarket.Presentation.Web", "..\TrollMarket.Presentation.Web\TrollMarket.Presentation.Web.csproj", "{ED3FFA5C-D898-4848-A829-CDB0AF689278}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrollMarket.DataAccess", "..\TrollMarket.DataAccess\TrollMarket.DataAccess.csproj", "{9558D703-122D-471D-9076-7D98E909DE60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrollMarket.Business", "..\TrollMarket.Business\TrollMarket.Business.csproj", "{7656A0FD-62FF-483A-A557-ADF4B4A052CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrollMarket.Presentation.API", "..\TrollMarket.Presentation.API\TrollMarket.Presentation.API.csproj", "{86617358-E086-4B2F-8F29-9D3D0E38400E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED3FFA5C-D898-4848-A829-CDB0AF689278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3FFA5C-D898-4848-A829-CDB0AF689278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3FFA5C-D898-4848-A829-CDB0AF689278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3FFA5C-D898-4848-A829-CDB0AF689278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9558D703-122D-471D-9076-7D98E909DE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9558D703-122D-471D-9076-7D98E909DE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9558D703-122D-471D-9076-7D98E909DE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9558D703-122D-471D-9076-7D98E909DE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7656A0FD-62FF-483A-A557-ADF4B4A052CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7656A0FD-62FF-483A-A557-ADF4B4A052CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7656A0FD-62FF-483A-A557-ADF4B4A052CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7656A0FD-62FF-483A-A557-ADF4B4A052CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86617358-E086-4B2F-8F29-9D3D0E38400E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86617358-E086-4B2F-8F29-9D3D0E38400E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86617358-E086-4B2F-8F29-9D3D0E38400E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86617358-E086-4B2F-8F29-9D3D0E38400E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {229773B8-45C2-4E20-B354-0CC693CAABE8}
+	EndGlobalSection
+EndGlobal

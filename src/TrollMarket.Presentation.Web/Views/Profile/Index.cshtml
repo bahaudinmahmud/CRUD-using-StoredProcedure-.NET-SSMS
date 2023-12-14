@@ -1,0 +1,130 @@
+﻿@model ProfileIndexViewModel
+<div class="menu">
+    Profile
+</div>
+
+<div class="text-center">
+    <table class="author-detail">
+        <tr>
+            <td>Name:</td>
+            <td>@Model.Profile.Name</td>
+        </tr>
+        <tr>
+            <td>Role:</td>
+            <td>@Model.Profile.Role</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>@Model.Profile.Address</td>
+        </tr>
+        <tr>
+            <td>Balance</td>
+            <td>@Model.Profile.Balance.ToString("C0")</td>
+            @if (Model.Profile.Role.Equals("buyer"))
+            {
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Add Balance
+                    </button>
+                </td>
+            }
+
+        </tr>
+    </table>
+
+    <h6>My Transaction History</h6>
+    <div class="grid-container">
+        <table>
+            <thead>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Shipment</th>
+            <th>Total Price</th>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.Transactions)
+                {
+                    <tr>
+                        <td>@order.OrderDate.ToString("M/d/yyyy")</td>
+                        <td>@order.ProductName</td>
+                        <td>@order.Quantity</td>
+                        <td>@order.Shipment</td>
+                        <td>@order.TotalPrice.ToString("C0")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+     </div>
+</div>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="popup-dialog form-dialog">
+                    <header>
+                        <a href="javascript:;" class="close-button">
+                            <i class="fas fa-window-close"></i>
+                        </a>
+                    </header>
+                    <form>
+                                              
+                                <input type="hidden" id="accountId" value="@Model.AccountId" />
+                                <input type="number" id="balance" />                      
+                      <button type="submit" class="blue-button">Top Up</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        addSubmitFormListener();
+
+        function addSubmitFormListener() {
+            $('.form-dialog button').click(function (event) {
+                event.preventDefault();
+                let dto = collectInputForm();
+                console.log(dto);
+                let requestMethod = 'PATCH';
+                $.ajax({
+                    method: requestMethod,
+                    url: 'http://localhost:5286/api/APIBalance',
+                    data: JSON.stringify(dto),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        location.reload();
+                    },
+                    error: function ({ status, responseJSON }) {
+                        if (status === 400) {
+                            console.log(responseJSON.errors);
+                        }
+                    }
+                });
+            });
+        }
+
+        function collectInputForm() {
+            let dto = {
+                accountId: $('#accountId').val(),
+                balanceNominal: $('#balance').val(),
+            };
+            return dto;
+        }
+    });
+</script>
