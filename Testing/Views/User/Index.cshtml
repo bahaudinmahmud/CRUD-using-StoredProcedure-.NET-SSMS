@@ -1,0 +1,77 @@
+﻿@* @using System.Data
+@model Testing.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nama Depan</th>
+            <th>Jenis Kelamin</th>
+            <th>Hobby</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow row in Model.Users.Rows) {
+            <tr>
+                <td>@row["NamaDepan"]</td>
+                <td>@row["JenisKelamin"]</td>
+                <td>@row["Hobby"]</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = row["UserID"] }) |
+                    @Html.ActionLink("Details", "Details", new { id = row["UserID"] }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = row["UserID"] })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@
+
+@model Testing.Models.UserViewModel1
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Insert">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nama Depan</th>
+            <th>Jenis Kelamin</th>
+            <th>Hobby</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model.Users) {
+            <tr>
+                <td>@row.NamaDepan</td>
+                <td>@row.JenisKelamin</td>
+                <td>
+                    @(row.Hobby == null ? "Belum mempunyai hobby" : row.Hobby)
+                    
+                </td>
+                <td>
+
+                    <a asp-controller="User" asp-action="Details" asp-route-id="@row.UserID">Details</a>
+                    <a asp-controller="User" asp-action="Delete" asp-route-id="@row.UserID">Delete</a>
+                    <a asp-controller="User" asp-action="Update" asp-route-id="@row.UserID">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,86 @@
+--DROP DATABASE TestDatabase;
+
+CREATE DATABASE TestDatabase;
+GO
+
+use TestDatabase;
+GO
+CREATE TABLE Users(
+	UserID INT CONSTRAINT FK_User_ID  Primary KEY identity(1,1),
+	NamaDepan varchar(20) NOT NULL,
+	JenisKelamin VARCHAR(6) CONSTRAINT CH_User_JK CHECK( JenisKelamin ='Pria' OR JenisKelamin = 'Wanita'),
+	Hobby VARCHAR(50)
+)
+
+DROP PROC dbo.GetUserById
+CREATE PROC dbo.GetUserById
+@id INT
+AS
+BEGIN
+	SELECT * FROM Users WHERE UserID = @id;
+END
+EXEC GetUserById @id=3;
+
+
+CREATE PROC dbo.GetAllUsers
+AS
+BEGIN
+	SELECT * FROM Users;
+END
+EXEC GetAllUsers
+
+INSERT INTO Users VALUES('Faraz', 'Pria', 'Main ML')
+SELECT * FROM Users;
+
+
+UPDATE Users SET NamaDepan = 'Priyo Prasetyo', JenisKelamin = 'Wanita', Hobby = null where UserID = 1;
+
+DELETE Users WHERE UserID = 1;
+
+
+CREATE PROC DeleteUserById
+@id INT
+AS
+BEGIN
+	DELETE Users where UserID = @id
+END
+
+EXEC DeleteUserById @id = 2;
+DROP PROC InsertNewUser
+CREATE PROC InsertNewUser
+@namaDepan varchar(20),
+@jenisKelamin Varchar(6),
+@hoby Varchar(50) NULL
+AS
+BEGIN
+	INSERT INTO Users (NamaDepan, JenisKelamin, Hobby) VALUES(@namaDepan, @jenisKelamin, @hoby);
+END
+
+EXEC InsertNewUser @namaDepan = 'Pras', @jenisKelamin ='Pria', @hoby = NULL;
+
+CREATE PROC UpdateUser
+@id INT,
+@namaDepan varchar(20),
+@jenisKelamin Varchar(6),
+@hoby Varchar(50) NULL
+AS
+BEGIN
+	UPDATE Users
+		set NamaDepan = @namaDepan,
+			JenisKelamin = @jenisKelamin,
+			Hobby= @hoby
+	where UserID = @id
+END
+
+EXEC UpdateUser @namaDepan = 'Anto', @jenisKelamin ='Pria', @hoby = NULL, @id = 3;
+exec GetAllUsers
+
+select *from 
+
+
+
+
+
+
+
+Users 
